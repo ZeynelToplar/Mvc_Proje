@@ -1,23 +1,30 @@
 ﻿
 @{
-    Layout = null;
+	Layout = null;
 }
+
+<link href="~/Content/bootstrap.min.css" rel="stylesheet" />
 
 <!DOCTYPE html>
 
 <h3>Mvc Kamp Tablo Örneği</h3>
 <br />
-<table class="table table-striped">
+<table class="table table-hover">
 	<tr>
 		<th>ID</th>
 		<th>Adı</th>
 		<th>Açıklama</th>
 		<th>Durum</th>
+		<th></th>
 	</tr>
 	<tr>
 		<td>1</td>
 		<td>Eğitim</td>
 		<td>Açıklama</td>
 		<td>Aktif</td>
+		<td><button class="btn btn-success">Güncelle</button></td>
 	</tr>
 </table>
+<button class="btn btn-info">Kategori Ekle</button>
+<button class="btn btn-warning">Kategori Listesi</button>
+<button class="btn btn-danger">Kategori Açıklamaları</button>

@@ -1,0 +1,52 @@
+﻿
+@{
+	ViewBag.Title = "Index";
+	Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+<link href="~/Content/Istatistik.css" rel="stylesheet" />
+<br />
+<div><h2>İstatistik Sayfası</h2></div>
+
+<div class="istatistik">
+	<div class="istatistik-eleman">
+		<div class="istatistik-baslik">
+			Toplam Kategori
+		</div>
+		<div class="istatistik-icerik">
+			@ViewBag.kategori
+		</div>
+	</div>
+	<div class="istatistik-eleman">
+		<div class="istatistik-baslik">
+			Yazılım Kategorisi Başlık Sayısı
+		</div>
+		<div class="istatistik-icerik">
+			@ViewBag.yazilim
+		</div>
+	</div>
+	<div class="istatistik-eleman">
+		<div class="istatistik-baslik">
+			İçerisinde A Harfi Geçen Yazar Sayısı
+		</div>
+		<div class="istatistik-icerik">
+			@ViewBag.yazar
+		</div>
+	</div>
+	<div class="istatistik-eleman">
+		<div class="istatistik-baslik">
+			Popüler Kategori
+		</div>
+		<div class="istatistik-icerik">
+			@ViewBag.populer
+		</div>
+	</div>
+	<div class="istatistik-eleman">
+		<div class="istatistik-baslik">
+			Aktif ve Pasif Kategorilerin Farkı
+		</div>
+		<div class="istatistik-icerik">
+			@ViewBag.fark
+		</div>
+	</div>
+</div>
+

@@ -27,6 +27,12 @@ namespace DataAccessLayer.Concrete.Repositories
         public void Delete(T t)
         {
             _object.Remove(t);
+            c.SaveChanges();
+        }
+
+        public T Get(Expression<Func<T, bool>> filter)
+        {
+            return _object.SingleOrDefault(filter);
         }
 
         public List<T> GetAll()

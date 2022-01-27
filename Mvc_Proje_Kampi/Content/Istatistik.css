@@ -1,0 +1,33 @@
+﻿.istatistik {
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+	font-size: 32px;
+	font-family: sans-serif;
+	justify-content: space-between;
+	align-items: center;
+	align-content: center;
+	margin-top:45px !important;
+}
+.istatistik .istatistik-eleman {
+	background-color: #571905;
+	width: 350px;
+	height: 350px;
+	max-width: 350px;
+	max-height: 350px;
+	top: 50%;
+	right: 50%;
+	text-align: center;
+	padding: 45px;
+	border-radius:15px;
+}
+.istatistik .istatistik-eleman .istatistik-baslik {
+	color:#000;
+	font-weight:800;
+	width:100%;
+	height:auto;
+}
+.istatistik .istatistik-eleman .istatistik-icerik {
+	color:#eee;
+	margin-top:15px;
+}
