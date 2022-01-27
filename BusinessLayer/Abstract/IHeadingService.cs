@@ -10,7 +10,6 @@ namespace BusinessLayer.Abstract
 {
     public interface IHeadingService
     {
-        //Ödev için bu şekilde yazıyorum , solid e uymadığının farkındayım.
         List<Heading> GetHeadings();
     }
 }
