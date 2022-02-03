@@ -18,7 +18,7 @@ namespace Mvc_Proje_Kampi.Controllers
         public ActionResult Index()
         {
             var kategoriSayisi = cm.GetCategories().Count();
-            var yazilimKategori = hm.GetHeadings().Where(x => x.CategoryID == 20).Count();
+            var yazilimKategori = hm.GetHeadings().Where(x => x.CategoryID == 21).Count();
             var yazar = wm.GetWriters().Where(x => x.WriterName.Contains("a")).Count();
             var populerBaslikID = hm.GetHeadings().GroupBy(x => x.CategoryID).OrderByDescending(z => z.Count()).Select(y => y.Key).FirstOrDefault();
             var populerKategori = cm.GetCategories().Where(x => x.CategoryID == populerBaslikID).Select(y=>y.CategoryName).FirstOrDefault();
