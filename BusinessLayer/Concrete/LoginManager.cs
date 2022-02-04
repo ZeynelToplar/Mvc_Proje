@@ -14,6 +14,7 @@ namespace BusinessLayer.Concrete
     public class LoginManager : ILoginService
     {
         IAdminDal _adminDal;
+        IWriterDal _writerDal;
 
         public LoginManager(IAdminDal adminDal)
         {

@@ -14,7 +14,7 @@ namespace Mvc_Proje_Kampi.Controllers
         MessageManager messageManager = new MessageManager(new EfMessageDal());
         public ActionResult Index()
         {
-            var messages = messageManager.GetMessagesSenbox().Where(x => x.IsDraft == true).ToList();
+            var messages = messageManager.GetDrafts();
             return View(messages);
         }
     }

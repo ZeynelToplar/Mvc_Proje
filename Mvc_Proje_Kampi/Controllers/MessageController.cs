@@ -19,7 +19,7 @@ namespace Mvc_Proje_Kampi.Controllers
         public ActionResult Inbox()
         {
             var messages = mm.GetMessagesInbox();
-            var unreadCount = mm.GetMessagesInbox().Where(x => x.UnRead == true).ToList();
+            var unreadCount = mm.GetUnreadMessage();
             ViewBag.unreadCount = unreadCount.Count();
             return View(messages);
         }
@@ -34,7 +34,7 @@ namespace Mvc_Proje_Kampi.Controllers
         }
         public ActionResult SendBox()
         {
-            var messages = mm.GetMessagesSenbox().Where(x=>x.IsDraft == false).ToList();
+            var messages = mm.GetMessagesSenbox();
             return View(messages);
         }
         [HttpGet]
@@ -79,7 +79,7 @@ namespace Mvc_Proje_Kampi.Controllers
         }
         public ActionResult UnRead()
         {
-            var messages = mm.GetMessagesInbox().Where(x => x.UnRead == true).ToList();
+            var messages = mm.GetUnreadMessage();
             return View(messages);
         }
     }

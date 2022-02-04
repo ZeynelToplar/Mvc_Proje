@@ -10,6 +10,6 @@ namespace EntityLayer.Concrete
     {
         public int SkillId { get; set; }
         public string SkillName { get; set; }
-        public double SkillValue { get; set; }
+        public string SkillValue { get; set; }
     }
 }

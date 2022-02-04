@@ -25,6 +25,7 @@ namespace BusinessLayer.Concrete
 
         public void DeleteHeading(Heading heading)
         {
+            heading.HeadingStatus = false;
             _headingDal.Update(heading);
         }
 
@@ -36,6 +37,11 @@ namespace BusinessLayer.Concrete
         public List<Heading> GetHeadings()
         {
             return _headingDal.GetAll();
+        }
+
+        public List<Heading> GetHeadingsByWriter()
+        {
+            return _headingDal.GetAll(x => x.WriterId == 4);
         }
 
         public void UptadeHeading(Heading heading)

@@ -9,7 +9,7 @@
 {
 <div class="form-group">
 	@Html.Label("Yazar ID")
-	@Html.TextBoxFor(x => x.WriterId, new { @class = "form-control", disabled = true })
+	@Html.HiddenFor(x => x.WriterId)
 	<br />
 	@Html.Label("Yazar Adı")
 	@Html.TextBoxFor(x => x.WriterName, new { @class = "form-control" })

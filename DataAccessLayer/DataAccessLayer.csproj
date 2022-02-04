@@ -88,6 +88,10 @@
     <Compile Include="Migrations\202202031713402_mig_skillcolumnschanged.designer.cs">
       <DependentUpon>202202031713402_mig_skillcolumnschanged.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202202041158567_mig_SkillColumnTypeChanged.cs" />
+    <Compile Include="Migrations\202202041158567_mig_SkillColumnTypeChanged.designer.cs">
+      <DependentUpon>202202041158567_mig_SkillColumnTypeChanged.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -110,6 +114,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202202031713402_mig_skillcolumnschanged.resx">
       <DependentUpon>202202031713402_mig_skillcolumnschanged.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202202041158567_mig_SkillColumnTypeChanged.resx">
+      <DependentUpon>202202041158567_mig_SkillColumnTypeChanged.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

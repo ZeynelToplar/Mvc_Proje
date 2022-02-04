@@ -10,7 +10,7 @@
 {
 <div class="form-group">
 	@Html.Label("Başlık ID")
-	@Html.TextBoxFor(x => x.HeadingId, new { @class = "form-control" , disabled = true})
+	@Html.HiddenFor(x => x.HeadingId)
 	<br />
 	@Html.Label("Başlık")
 	@Html.TextBoxFor(x => x.HeadingName, new { @class = "form-control" })
