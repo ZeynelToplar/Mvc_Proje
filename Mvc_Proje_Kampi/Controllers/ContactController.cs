@@ -27,9 +27,10 @@ namespace Mvc_Proje_Kampi.Controllers
         }
         public PartialViewResult MessageBoxPartial()
         {
+            string mail = (string)Session["AdminUserName"];
             var contact = cm.GetContacts().Count();
-            var sendBox = mm.GetMessagesSenbox().Count();
-            var inBox = mm.GetMessagesInbox().Count();
+            var sendBox = mm.GetMessagesSenbox(mail).Count();
+            var inBox = mm.GetMessagesInbox(mail).Count();
             ViewBag.contacts = contact;
             ViewBag.sendBox = sendBox;
             ViewBag.inBox = inBox;

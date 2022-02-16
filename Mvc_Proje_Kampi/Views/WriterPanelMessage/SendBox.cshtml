@@ -81,7 +81,7 @@
 											<td class="mailbox-star"><a href="/WriterPanelMessage/GetMessageDetail/@item.MessageId"><i class="fas fa-star text-warning"></i></a></td>
 											<td class="mailbox-name"><a href="/WriterPanelMessage/GetMessageDetail/@item.MessageId">@item.ReceiverMail</a></td>
 											<td class="mailbox-subject">
-												<b>@item.Subject</b> - @Html.Raw(item.MessageContent.Substring(0, 10))...
+												<b>@item.Subject</b> - @Html.Raw(item.MessageContent)
 											</td>
 											<td class="mailbox-attachment"></td>
 											<td class="mailbox-date">@String.Format("{0:D}", item.MessageDate)</td>

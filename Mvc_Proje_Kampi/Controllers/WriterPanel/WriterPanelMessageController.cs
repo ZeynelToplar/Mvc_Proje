@@ -1,5 +1,6 @@
 ﻿using BusinessLayer.Concrete;
 using BusinessLayer.ValidationRules;
+using DataAccessLayer.Concrete;
 using DataAccessLayer.EntityFramework;
 using EntityLayer.Concrete;
 using FluentValidation.Results;
@@ -18,18 +19,25 @@ namespace Mvc_Proje_Kampi.Controllers.WriterPanel
         MessageValidator messageValidator = new MessageValidator();
         public ActionResult Inbox()
         {
-            var messages = mm.GetMessagesInbox();
-            var unreadCount = mm.GetUnreadMessage();
+            string mail = (string)Session["WriterMail"];
+            var messages = mm.GetMessagesInbox(mail);
+            var unreadCount = mm.GetUnreadMessage(mail);
             ViewBag.unreadCount = unreadCount.Count();
             return View(messages);
         }
         public ActionResult SendBox()
         {
-            var messages = mm.GetMessagesSenbox();
+            string mail = (string)Session["WriterMail"];
+            var messages = mm.GetMessagesSenbox(mail);
             return View(messages);
         }
         public PartialViewResult MessageBoxPartial()
         {
+            string mail = (string)Session["WriterMail"];
+            var sendBox = mm.GetMessagesSenbox(mail).Count();
+            var inBox = mm.GetMessagesInbox(mail).Count();
+            ViewBag.sendBox = sendBox;
+            ViewBag.inBox = inBox;
             return PartialView();
         }
         public ActionResult GetMessageDetail(int id)
@@ -49,6 +57,7 @@ namespace Mvc_Proje_Kampi.Controllers.WriterPanel
         [HttpPost]
         public ActionResult NewMessage(Message message, string submitButton)
         {
+            string sender = (string)Session["WriterMail"];
             switch (submitButton)
             {
                 case "Taslaklara Kaydet":
@@ -58,7 +67,7 @@ namespace Mvc_Proje_Kampi.Controllers.WriterPanel
                     if (results.IsValid)
                     {
                         message.MessageDate = DateTime.Now;
-
+                        message.SenderMail = sender;
                         mm.AddMessage(message);
                         return RedirectToAction("SendBox");
                     }
@@ -76,14 +85,17 @@ namespace Mvc_Proje_Kampi.Controllers.WriterPanel
         [HttpPost]
         public ActionResult AddDraft(Message draft)
         {
+            string sender = (string)Session["WriterMail"];
             draft.MessageDate = DateTime.Parse(DateTime.Now.ToShortDateString());
             draft.IsDraft = true;
+            draft.SenderMail = sender;
             mm.AddMessage(draft);
             return RedirectToAction("AddDraft");
         }
         public ActionResult UnRead()
         {
-            var messages = mm.GetUnreadMessage();
+            string mail = (string)Session["WriterMail"];
+            var messages = mm.GetUnreadMessage(mail);
             return View(messages);
         }
     }

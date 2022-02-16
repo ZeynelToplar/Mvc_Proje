@@ -39,9 +39,9 @@ namespace BusinessLayer.Concrete
             return _headingDal.GetAll();
         }
 
-        public List<Heading> GetHeadingsByWriter()
+        public List<Heading> GetHeadingsByWriter(int id)
         {
-            return _headingDal.GetAll(x => x.WriterId == 4);
+            return _headingDal.GetAll(x => x.WriterId == id).Where(y => y.HeadingStatus == true).ToList();
         }
 
         public void UptadeHeading(Heading heading)

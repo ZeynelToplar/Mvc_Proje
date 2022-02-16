@@ -14,7 +14,8 @@ namespace Mvc_Proje_Kampi.Controllers.WriterPanel
         MessageManager messageManager = new MessageManager(new EfMessageDal());
         public ActionResult Index()
         {
-            var messages = messageManager.GetDrafts();
+            string sender = (string)Session["WriterMail"];
+            var messages = messageManager.GetDrafts(sender);
             return View(messages);
         }
     }

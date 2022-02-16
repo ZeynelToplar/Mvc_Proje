@@ -33,25 +33,24 @@ namespace BusinessLayer.Concrete
             return _messageDal.Get(x => x.MessageId == id);
         }
 
-        public List<Message> GetDrafts()
+        public List<Message> GetDrafts(string mail)
         {
-            return _messageDal.GetAll(x => x.SenderMail == "masil@hotmail.com").Where(x => x.IsDraft).ToList();
+            return _messageDal.GetAll(x => x.SenderMail == mail).Where(x => x.IsDraft).ToList();
         }
 
-        public List<Message> GetMessagesInbox()
+        public List<Message> GetMessagesInbox(string mail)
         {
-            return _messageDal.GetAll(x => x.ReceiverMail == "masil@hotmail.com");
+            return _messageDal.GetAll(x => x.ReceiverMail == mail);
         }
 
-        public List<Message> GetMessagesSenbox()
+        public List<Message> GetMessagesSenbox(string mail)
         {
-            return _messageDal.GetAll(x => x.SenderMail == "masil@hotmail.com").Where(x=>x.IsDraft==false).ToList();
-
+            return _messageDal.GetAll(x => x.SenderMail == mail).Where(x=>x.IsDraft==false).ToList();
         }
 
-        public List<Message> GetUnreadMessage()
+        public List<Message> GetUnreadMessage(string mail)
         {
-            return _messageDal.GetAll(x => x.SenderMail == "masil@hotmail.com").Where(x => x.UnRead).ToList();
+            return _messageDal.GetAll(x => x.SenderMail == mail).Where(x => x.UnRead).ToList();
         }
 
         public void UpdateMessage(Message message)

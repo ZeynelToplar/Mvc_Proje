@@ -3,21 +3,27 @@
 	ViewBag.Title = "NewHeading";
 	Layout = "~/Views/Shared/_WriterLayout.cshtml";
 }
-
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+<script src="~/Scripts/jquery-3.4.1.js"></script>
 <h2>Başlık Ekleme Sayfası</h2>
 <br />
-
+<h1>@ViewBag.m</h1>
 @using (Html.BeginForm("NewHeading", "WriterPanel", FormMethod.Post))
 {
 	<div class="form-group">
 		@Html.Label("Başlık Adı")
-		@Html.TextBoxFor(x => x.HeadingName, new { @class = "form-control"})
+		@Html.TextBoxFor(x => x.HeadingName, new { @class = "form-control" })
 		<br />
 		@Html.Label("Kategori")
-		@Html.DropDownListFor(x => x.CategoryID, (List<SelectListItem>) ViewBag.valueC, new { @class = "form-control" })
+		@Html.DropDownListFor(x => x.CategoryID, (List<SelectListItem>)ViewBag.valueC, new { @class = "form-control" })
 		<br />
-		<button class="btn btn-success">Başlığı Oluştur</button>
+		<button class="btn btn-success" id="btn1">Başlığı Oluştur</button>
 	</div>
 }
 <script src="~/AdminLTE-3.0.4/plugins/jquery/jquery.min.js"></script>
+<script>
+	$('#btn1').click(function () {
+		swal("Başarılı", "Başlık başarılı bir şekilde oluşturuldu.", "success");
+	});
+</script>
 

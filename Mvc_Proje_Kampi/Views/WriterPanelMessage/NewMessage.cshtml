@@ -41,7 +41,7 @@
 				@Html.Action("MessageBoxPartial", "WriterPanelMessage")
 				<!-- /.col -->
 				<div class="col-md-9">
-					@using (Html.BeginForm("NewMessage", "Message", FormMethod.Post))
+					@using (Html.BeginForm("NewMessage", "WriterPanelMessage", FormMethod.Post))
 					{
 						<div class="card card-primary card-outline">
 							<div class="card-header">

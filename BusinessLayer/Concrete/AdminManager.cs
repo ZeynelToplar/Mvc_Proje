@@ -24,9 +24,29 @@ namespace BusinessLayer.Concrete
             _adminDal.Add(admin);   
         }
 
+        public void DeleteAdmin(Admin admin)
+        {
+            _adminDal.Delete(admin);
+        }
+
+        public List<Admin> GetAdmins()
+        {
+            return _adminDal.GetAll();
+        }
+
+        public Admin GetById(int id)
+        {
+            return _adminDal.Get(x => x.AdminId == id);
+        }
+
         public Admin GetByMail(string mail)
         {
             return _adminDal.Get(x => x.AdminUserName == mail);
+        }
+
+        public void UpdateAdmin(Admin admin)
+        {
+            _adminDal.Update(admin);
         }
     }
 }

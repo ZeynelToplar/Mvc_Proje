@@ -15,6 +15,7 @@ using Newtonsoft.Json.Linq;
 
 namespace Mvc_Proje_Kampi.Controllers
 {
+    [AllowAnonymous]
     public class LoginController : Controller
     {
         // GET: Login
@@ -69,6 +70,12 @@ namespace Mvc_Proje_Kampi.Controllers
                 RedirectToAction("WriterLogin");
             }
             return View();
+        }
+        public ActionResult LogOut()
+        {
+            FormsAuthentication.SignOut();
+            Session.Abandon();
+            return RedirectToAction("Headings", "Default");
         }
     }
 }

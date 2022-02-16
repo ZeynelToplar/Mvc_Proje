@@ -18,8 +18,9 @@ namespace Mvc_Proje_Kampi.Controllers
         MessageValidator messageValidator = new MessageValidator();
         public ActionResult Inbox()
         {
-            var messages = mm.GetMessagesInbox();
-            var unreadCount = mm.GetUnreadMessage();
+            string mail = (string)Session["AdminUserName"];
+            var messages = mm.GetMessagesInbox(mail);
+            var unreadCount = mm.GetUnreadMessage(mail);
             ViewBag.unreadCount = unreadCount.Count();
             return View(messages);
         }
@@ -34,7 +35,8 @@ namespace Mvc_Proje_Kampi.Controllers
         }
         public ActionResult SendBox()
         {
-            var messages = mm.GetMessagesSenbox();
+            string mail = (string)Session["AdminUserName"];
+            var messages = mm.GetMessagesSenbox(mail);
             return View(messages);
         }
         [HttpGet]
@@ -45,6 +47,7 @@ namespace Mvc_Proje_Kampi.Controllers
         [HttpPost]
         public ActionResult NewMessage(Message message, string submitButton)
         {
+            string sender = (string)Session["AdminUserName"];
             switch (submitButton)
             {
                 case "Taslaklara Kaydet":
@@ -54,7 +57,7 @@ namespace Mvc_Proje_Kampi.Controllers
                     if (results.IsValid)
                     {
                         message.MessageDate = DateTime.Now;
-
+                        message.SenderMail = sender;
                         mm.AddMessage(message);
                         return RedirectToAction("SendBox");
                     }
@@ -72,14 +75,17 @@ namespace Mvc_Proje_Kampi.Controllers
         [HttpPost]
         public ActionResult AddDraft(Message draft)
         {
+            string sender = (string)Session["AdminUserName"];
             draft.MessageDate = DateTime.Parse(DateTime.Now.ToShortDateString());
             draft.IsDraft = true;
+            draft.SenderMail = sender;
             mm.AddMessage(draft);
             return RedirectToAction("AddDraft");
         }
         public ActionResult UnRead()
         {
-            var messages = mm.GetUnreadMessage();
+            string sender = (string)Session["AdminUserName"];
+            var messages = mm.GetUnreadMessage(sender);
             return View(messages);
         }
     }
